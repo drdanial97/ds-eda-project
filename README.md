@@ -1,98 +1,46 @@
-# ds-project-template
+# Seattle-Bellevue Housing Market Analysis 🏡
 
-Template for creating ds simple projects
+Welcome! This repository collects **Jupyter notebooks, slide decks, and SQL assets** that explore and model King County house-price data, with a special focus on the Seattle & Bellevue area.
 
-## Requirements
+---
 
-- pyenv
-- python==3.11.3
+## 🔍 What’s inside?
 
-## Setup
+| Artifact | Path | Why it matters |
+|----------|------|----------------|
+| **`notebooks/data-cleaning.ipynb`** | `notebooks/` | Reproducible pipeline for _null-value imputation_, _outlier removal_, and core _feature engineering_. |
+| **`notebooks/eda.ipynb`** | `notebooks/` | Exploratory Data Analysis evaluating three market hypotheses (see below). |
+| **`docs/EDA Presentation.pdf`** | `docs/` | 15-slide stakeholder deck summarising key insights, charts, and takeaways. |
+| **`sql/Jennifer Montgomery – requirement.sql`** | `sql/` | Schema + seed script aligned with our premium-buyer persona. |
 
-One of the first steps when starting any data science project is to create a virtual environment. For this project you have to create this environment from scratch yourself. However, you should be already familiar with the commands you will need to do so. The general workflow consists of... 
+> **Tip:** All generated datasets live in `data/` and are _git-ignored_ by default (see `.gitignore`).
 
-* setting the python version locally to 3.11.3
-* creating a virtual environment using the `venv` module
-* activating your newly created environment 
-* upgrading `pip` (This step is not absolutely necessary, but will save you trouble when installing some packages.)
-* installing the required packages via `pip`
+---
 
-At the end, you want to make sure that people who are interested in your project can create an identical environment on their own computer in order to be able to run your code without running into errors. Therefore you can create a `requirements file` and add it to your repository. You can create such a file by running the following command: 
+## 🧠 Business Hypotheses
 
-```bash
-pip freeze > requirements.txt
-```
+1. **Location premium:** Houses located near **Seattle** and **Bellevue** command higher prices.  
+2. **Size matters:** Larger interior living space correlates with a higher sale price.  
+3. **Waterfront effect:** Properties with direct waterfront access sell for a premium.
 
-*Note: In rare case such a requirements file created with `pip freeze` might not ensure that another (especially M1 chip) user can install and execute it properly. This can happen if libraries need to be compiled (e.g. SciPy). Then it also depends on environment variables and the actual system libraries.*
+These hypotheses are tested in `notebooks/eda.ipynb` using descriptive statistics, visual EDA, and basic statistical tests (t-tests & linear regression).
 
-### Unit testing (Optional)
+---
 
-If you write python scripts for your data processing methods, you can also write unit tests. In order to run the tests execute in terminal:
+## 👤 Buyer Persona — *Jennifer Montgomery*
 
-```bash
-pytest
-```
+| Attribute | Value |
+|-----------|-------|
+| **Role** | Buyer |
+| **Property Type** | Waterfront, fully renovated |
+| **Budget** | High — *“show-off”* tier |
+| **Quality Bar** | Top-graded finishes, **A-rated schools** |
+| **Motivation** | Prestige & quick resale |
+| **Timing** | Needs to close **within 1 month** |
+| **Exit Plan** | Plans to resell in **≤ 1 year** |
+| **Investment Lens** | Strong appreciation potential |
 
-This command will execute all the functions in your project that start with the word **test**.
+The `Jennifer Montgomery – requirement.sql` script materialises database tables that capture these requirements for downstream modelling and deal-sourcing tools.
 
-## Set up your Environment
-This repo contains a requirements.txt file with a list of all the packages and dependencies you will need.
-
-Before you can start with plotly in Jupyter Lab you have to install node.js (if you haven't done it before).
-- Check **Node version**  by run the following commands:
-    ```sh
-    node -v
-    ```
-    If you haven't installed it yet, begin at `step_1`. Otherwise, proceed to `step_2`.
-
-
-### **`macOS`** type the following commands : 
-
-
-- `Step_1:` Update Homebrew and install Node by following commands:
-    ```sh
-    brew update
-    brew install node
-    ```
-
-- `Step_2:` Install the virtual environment and the required packages by following commands:
-
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-### **`WindowsOS`** type the following commands :
-
-
-- `Step_1:` Update Chocolatey and install Node by following commands:
-    ```sh
-    choco upgrade chocolatey
-    choco install nodejs
-    ```
-
-- `Step_2:` Install the virtual environment and the required packages by following commands.
-
-   For `PowerShell` CLI :
-
-    ```PowerShell
-    pyenv local 3.11.3
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-
-    For `Git-Bash` CLI :
-  
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/Scripts/activate
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
- 
+---
 
